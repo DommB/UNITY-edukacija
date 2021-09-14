@@ -14,11 +14,13 @@ public class zadatak_3f : MonoBehaviour
     float startPozY;
     float startPozZ;
 
-    /*private void Start()
+    private void Start()
     {
-        startPozX = transform.;
+        startPozX = transform.eulerAngles.x;
+        startPozY = transform.eulerAngles.y;
+        startPozZ = transform.eulerAngles.z;
     }
-    */
+
     private void Update()
     {
         //g)
@@ -32,14 +34,14 @@ public class zadatak_3f : MonoBehaviour
         }
 
         //h)
-        //if (transform.localScale.x <= startPozX / 2 || transform.localScale.y <= startPozY / 2 || transform.localScale.z <= startPozZ / 2)
-        //{
-        //    transform.position += new Vector3(posX, posY, posZ);
-        //}
-        //else if (transform.localScale.x >= startPozX * 2 || transform.localScale.y >= startPozY * 2 || transform.localScale.z >= startPozZ * 2)
-        //{
-        //    transform.position -= new Vector3(posX, posY, posZ);
-        //}
+        if (transform.eulerAngles.x <= -startPozX || transform.eulerAngles.y <= -startPozY || transform.eulerAngles.z <= -startPozZ)
+        {
+            transform.position += new Vector3(posX, posY, posZ);
+        }
+        else if (transform.eulerAngles.x >= startPozX * 2 || transform.eulerAngles.y >= startPozY * 2 || transform.eulerAngles.z >= startPozZ * 2)
+        {
+            transform.position -= new Vector3(posX, posY, posZ);
+        }
 
         transform.Rotate(new Vector3(rotX, rotY, rotZ) * Time.deltaTime);
     }
