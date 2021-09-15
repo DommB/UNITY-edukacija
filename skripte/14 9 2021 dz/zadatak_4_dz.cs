@@ -25,13 +25,13 @@ public class zadatak_4_dz : MonoBehaviour
         {
             transform.localScale = Vector3.one;
             transform.position = new Vector3(0, 0, 0);
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.eulerAngles = new Vector3(0, 0, 0);
         }
         else
         {
             transform.localScale += new Vector3(zbrojScl, zbrojScl, zbrojScl);
             transform.position += new Vector3(zbrojPos, zbrojPos, zbrojPos);
-            transform.rotation = Quaternion.Euler(69, 420, 911);
+            transform.eulerAngles = new Vector3(69, 420, 911);
         }
     }
 }
