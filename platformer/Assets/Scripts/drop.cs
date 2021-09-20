@@ -18,7 +18,7 @@ public class drop : MonoBehaviour
         {
             transform.position += Vector3.down * speed * Time.deltaTime;
         }
-        if (transform.position.y < 2.5f)
+        if (transform.position.y < 2)
         {
             direction = true;
         }

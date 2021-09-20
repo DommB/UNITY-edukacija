@@ -4,26 +4,35 @@ using UnityEngine;
 
 public class pointCollection : MonoBehaviour
 {
+    public AudioSource audioSrc;
+    public AudioClip scored;
+    public AudioClip dieded;
     public float health;
     public float dmg;
     public int points;
-    bool ded, won, bruhzil;
+    bool bruhzil;
     bool msg = true;
+
+    private void Start()
+    {
+        audioSrc = GetComponent<AudioSource>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Point")
         {
             points++;
-            //nestane Point
+            audioSrc.clip = scored;
+            audioSrc.Play();
             other.gameObject.SetActive(false);
-            //za gašenje collidera
-            //other.enabled = false;
         }
 
         if(other.gameObject.tag == "Schid")
         {
             health -= dmg;
+            audioSrc.clip = dieded;
+            audioSrc.Play();
             other.gameObject.SetActive(false);
         }
     }
@@ -32,7 +41,6 @@ public class pointCollection : MonoBehaviour
         if (other.gameObject.tag == "Brazil")
         {
             bruhzil = true;
-            EndNote();
         }
     }
 
@@ -41,33 +49,20 @@ public class pointCollection : MonoBehaviour
         if (other.gameObject.tag == "Crush")
         {
             health -= dmg;
+            audioSrc.clip = dieded;
+            audioSrc.Play();
         }
     }
 
 
     private void Update()
     {
-        if (health <= 0)
-        {
-            ded = true;
-            EndNote();
-        }
-        else if (points == 10)
-        {
-            won = true;
-            EndNote();
-        }
-
-    }
-
-    void EndNote()
-    {
-        if (ded && msg)
+        if (health <= 0 && msg)
         {
             Debug.Log("OOOOOOOOOO NIGGA U DED");
             msg = false;
         }
-        else if (won && msg)
+        else if (points == 10 && msg)
         {
             Debug.Log("OOOOOOOOOO NIGGA U WON");
             msg = false;
@@ -77,5 +72,6 @@ public class pointCollection : MonoBehaviour
             Debug.Log("Bem vindo ao Brasil\nnao resista");
             msg = false;
         }
+
     }
 }
