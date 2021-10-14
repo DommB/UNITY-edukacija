@@ -1,0 +1,3 @@
+skini Endless Runner - Sample Game sa asset storea
+komentiraj sve skripte
+ako znaš, prenamijeni dio koda za nešta
